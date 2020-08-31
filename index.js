@@ -1,5 +1,6 @@
 /*Libraries */
 require('dotenv').config();
+var dataTable = require('./table');
 const Discord = require('discord.js'); 
 
 /*ENV Data*/
@@ -12,9 +13,19 @@ bot.login(TOKEN);
 
 
 bot.on('message', msg => {
-    console.log(msg);
-    if(msg.content == '!help'){
-        msg.channel.send("Help yourself :p");
+    //console.log(msg.channel);
+    if(msg.channel.name == 'drzeke' && msg.content == '!help 1101'){
+        msg.channel.send("Does Sanjay not understand again?");
+    } //else if(msg.content = '!help 1101') {
+       // msg.reply("poor you learn on your own :P");
+  //  }
+    if(msg.content == '!idiot'){
+        msg.channel.send("R u an idiot?");
+    }
+    if(msg.content == '!data'){
+       dataTable = new dataTable("ECE 1101", "Intro to Electrical Analysis", "7:00 AM", "3", "Dr.Zeke");
+       console.log(dataTable);
+       //msg.channel.send(dataTable);
     }
 })
 
