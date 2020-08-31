@@ -1,0 +1,6 @@
+#Don't Track content of these folders
+node_modules/
+
+
+#Other stuff
+.env
