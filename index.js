@@ -23,11 +23,25 @@ bot.on('message', msg => {
         msg.channel.send("R u an idiot?");
     }
     if(msg.content == '!data'){
-       dataTable = new dataTable("ECE 1101", "Intro to Electrical Analysis", "7:00 AM", "3", "Dr.Zeke");
+       dataTable = new dataTable("ECE 1101", "Intro to Electrical Analysis", "7:00 AM", 3, "Dr.Zeke");
        console.log(dataTable);
-       //msg.channel.send(dataTable);
+       msg.channel.send(JSON.stringify(dataTable, undefined, 4));
     }
 })
+
+    // if(msg.content == "!memes"){
+    //     msg.channel.send("Kuzsco is too lazy to make this command yet D:");
+    // }
+    // if(msg.content == "?rich"){
+    //     msg.channel.send("This bitch too poor to be rich, don't even got a island yet psshhh");
+    // }
+    // if(msg.content == "!bigbrain"){
+    //     msg.channel.send('Big Brain more like peebrain idiot :angry:');
+    // }
+    // //console.log(msg.author.username)
+    // if(msg.author.username == 'Remon20'){
+    //     //msg.channel.send("STOP TALKING");
+    // }
 
 /* Note to self
  * To run a JS File, use node */
