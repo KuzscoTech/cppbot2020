@@ -2,66 +2,39 @@ import os, random
 import discord
 from dotenv import load_dotenv
 
+from discord.ext import commands
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
 
-client = discord.Client()
+bot = commands.Bot(command_prefix="!")
 
-@client.event
+@bot.command(name="create_channel", help="Testing commands")
+@commands.has_role('admin')
+async def create_channel(ctx, channel_name):
+    guild = ctx.guild
+    existing_channel = discord.utils.get(guild.channels, name=channel_name)
+    if not existing_channel:
+        await guild.create_text_channel(channel_name)
+        await ctx.send(f'Channel \'{channel_name}\' is created.')
+    else:
+        await ctx.send(f'Channel alrEADY EXIST, sTewpiD...')
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.errors.CheckFailure):
+        await ctx.send(f'You have no power here. '
+                        'Check your role bruh, also..\n'
+                        "@Admin these heaux tryin summ\'")
+
+async def send_nudes(ctx, number: int): # ctx=self, Convert parameter type (:)
+    # ex) !send_noods 3
+    response = f"Alright, I'll send {number} pics if you deposit ${number*20}.00 into my CashApp."
+    await ctx.send(response)
+
+
+@bot.event
 async def on_ready():
-    # select guild from list of authorized server with Client
-    guild = discord.utils.get(client.guilds, name=GUILD)
+    print(f'{bot.user.name} has connected to Discord')
 
-    # current guild (discord_playground)
-    print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})'
-    )
-
-    # print list of server's members
-    members = '\n - '.join([member.name for member in guild.members])
-    print(f'Guild Members:\n - {members}')
-
-@client.event
-async def on_member_join(member):
-    await member.create_dm() # create a direct message channel
-    await member.dm_channel.send(
-        f'Hi {member.name}, please, for the love of God, fuckin leave...'
-    )
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    electricity = ["Miss me with that gay shit,\n"
-                    "fuck outta here, fuck you mean, fuckboy.",
-                    "Boohoo, buy a bandage.",
-                    "I can't feel my legs either.",
-                    "Break up with your girlfriend, bro.",
-                    ["Gratatata, I'm in the hood", "Gratata"]]
-
-    # key = message.content.split(" ")
-    if "help" in message.content:
-            response = random.choice(electricity)
-            await message.channel.send(response)
-
-
-client.run(TOKEN) # run
-
-
-
-
-
-
-
-
-''' Overriding on_ready()
-class CustomClient(discord.Client):
-    async def on_ready(self):
-        print(f'{self.user} has connected to Discord!')
-
-
-client = CustomClient()
-'''
+bot.run(TOKEN)
