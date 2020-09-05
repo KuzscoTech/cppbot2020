@@ -91,7 +91,7 @@ async def print_computer(ctx):
         )
 
 
-# permission error
+# Permission error
 @bot.event
 async def on_command_error(ctx, error):
     # if permission failed (owner, admin, mod, etc), raise error
