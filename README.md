@@ -19,9 +19,6 @@
 - Might need some kind of timer API
   
   
-  
-
-  
 # Progress Todo:
 
 ### Discord Bot (Python & MongoDB):
@@ -35,7 +32,8 @@
 -   
   
 
-
+### Plans & Ideas
+OneNote - https://livecsupomona-my.sharepoint.com/:o:/g/personal/kbhandari_cpp_edu/Ekbq7XZpI6FOtrrDUtnSu_kBxGjG2Zpl73u9A6gFCXEMwg?e=5%3AlHm5BW&at=9]
 
 
 ### References: 
