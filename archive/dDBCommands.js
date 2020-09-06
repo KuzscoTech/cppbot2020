@@ -1,6 +1,7 @@
 var dataTable = require('../table');
 var user =  require('../models/user');
 
+//Discord 
 module.exports.msg = function (msg){
     if(msg.channel.name == 'drzeke' && msg.content == '!help 1101'){
         msg.channel.send("Does Sanjay not understand again?");
@@ -15,7 +16,12 @@ module.exports.msg = function (msg){
             if(err){
                 console.log(err);
             } else {
-            msg.channel.send(JSON.stringify(result, undefined, 4));
+                //(JSON.stringify(result, undefined, 4))
+                console.log(result);
+                msg.channel.send(
+                    (`Class: ${result[0].class.modules[0].name}\n`)
+                   // `Meeting time: ${time.upper()}`
+                )
             }
         });
     //    dataTable = new dataTable("ECE 1101", "Intro to Electrical Analysis", "7:00 AM", 3, "Dr.Zeke");
