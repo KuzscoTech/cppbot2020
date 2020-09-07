@@ -18,7 +18,7 @@ const signIn = require('./routes/signIn');
 
 /* Static Files */
 app.use(express.static('./public'));
-
+//Changes
 /*Routes*/
 app.get('/', (req, res) =>{
     res.sendFile('/public/Website/index.html', {root: __dirname});
